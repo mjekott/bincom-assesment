@@ -1,3 +1,9 @@
+
+## preview
+
+<img src="/solution.gif" alt="preview" />
+
+
 ## Installation
 
 ```bash
@@ -17,6 +23,3 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
-## preview
-
-<img src="/solution.gif" alt="preview" />

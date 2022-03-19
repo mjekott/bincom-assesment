@@ -4,8 +4,10 @@ import { NestExpressApplication } from '@nestjs/platform-express';
 import { join } from 'path';
 import * as session from 'express-session';
 import { flash } from 'express-flash-message';
+import * as dotenv from 'dotenv';
 
 async function bootstrap() {
+  dotenv.config();
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
   app.useStaticAssets(join(__dirname, '..', 'public'));
   app.setBaseViewsDir(join(__dirname, '..', 'views'));

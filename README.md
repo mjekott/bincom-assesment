@@ -16,3 +16,7 @@ $ npm run start:dev
 # production mode
 $ npm run start:prod
 ```
+
+## preview
+
+<img src="/solution.gif" alt="preview" />

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bincom Assessment</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/index.min.css"
+    />
+  </head>
+  <body>
+    <nav
+      class="relative w-full flex flex-wrap items-center justify-between py-3 bg-gray-900 text-gray-200 shadow-lg navbar navbar-expand-lg navbar-light"
+    >
+      <div
+        class="container-fluid w-full flex flex-wrap items-center justify-between px-6"
+      >
+        <button
+          class="navbar-toggler text-gray-200 border-0 hover:shadow-none hover:no-underline py-2 px-2.5 bg-transparent focus:outline-none focus:ring-0 focus:shadow-none focus:no-underline"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent1"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <svg
+            aria-hidden="true"
+            focusable="false"
+            data-prefix="fas"
+            data-icon="bars"
+            class="w-6"
+            role="img"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 448 512"
+          >
+            <path
+              fill="currentColor"
+              d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"
+            ></path>
+          </svg>
+        </button>
+        <div
+          class="collapse navbar-collapse flex-grow items-center"
+          id="navbarSupportedContent1"
+        >
+          <a class="text-xl text-white pr-2 font-semibold" href="#"
+            >Bincom Assessment</a
+          >
+          <!-- Left links -->
+          <ul class="navbar-nav flex flex-col pl-0 list-style-none mr-auto">
+            <li class="nav-item p-2">
+              <a class="nav-link text-white" href="/">Polling Units</a>
+            </li>
+            <li class="nav-item p-2">
+              <a
+                class="nav-link text-white opacity-60 hover:opacity-80 focus:opacity-80 p-0"
+                href="/lga"
+                >LGA</a
+              >
+            </li>
+            <li class="nav-item p-2">
+              <a
+                class="nav-link text-white opacity-60 hover:opacity-80 focus:opacity-80 p-0"
+                href="#"
+                >Add Polling unit</a
+              >
+            </li>
+          </ul>
+          <!-- Left links -->
+        </div>
+      </div>
+    </nav>
+    <div class="container mx-auto pt-10">
+      <nav class="rounded-md w-full">
+        <ol class="list-reset flex">
+          <li>
+            <a href="/" class="text-blue-600 hover:text-blue-700">GO back</a>
+          </li>
+          <li><span class="text-gray-500 mx-2">/</span></li>
+          <li class="text-gray-500">Result</li>
+        </ol>
+      </nav>
+      <h1 class="text-center font-bold text-3xl mb-2"><%=name%> Result</h1>
+      <div class="flex flex-col">
+        <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+          <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
+            <div class="overflow-hidden">
+              <table class="min-w-full">
+                <thead class="border-b">
+                  <tr>
+                    <th
+                      scope="col"
+                      class="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                    >
+                      id
+                    </th>
+                    <th
+                      scope="col"
+                      class="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                    >
+                      Party
+                    </th>
+                    <th
+                      scope="col"
+                      class="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                    >
+                      Score
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% if(results.length > 0) { %> <%
+                  results.forEach(function(result){%>
+                  <tr class="border-b">
+                    <td
+                      class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"
+                    >
+                      <%= result.result_id %>
+                    </td>
+                    <td
+                      class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"
+                    >
+                      <%= result.party_abbrevaition %>
+                    </td>
+                    <td
+                      class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"
+                    >
+                      <%= result.party_score %>
+                    </td>
+                  </tr>
+                  <% })%> <% } else { %>
+                  <tr>
+                    <td colspan="3" class="text-center mt-2">
+                      No results found
+                    </td>
+                  </tr>
+                  <% } %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+            },
+          },
+        },
+      };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
+  </body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bincom Assessment</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/index.min.css"
+    />
+  </head>
+  <body>
+    <nav
+      class="relative w-full flex flex-wrap items-center justify-between py-3 bg-gray-900 text-gray-200 shadow-lg navbar navbar-expand-lg navbar-light"
+    >
+      <div
+        class="container-fluid w-full flex flex-wrap items-center justify-between px-6"
+      >
+        <button
+          class="navbar-toggler text-gray-200 border-0 hover:shadow-none hover:no-underline py-2 px-2.5 bg-transparent focus:outline-none focus:ring-0 focus:shadow-none focus:no-underline"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent1"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <svg
+            aria-hidden="true"
+            focusable="false"
+            data-prefix="fas"
+            data-icon="bars"
+            class="w-6"
+            role="img"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 448 512"
+          >
+            <path
+              fill="currentColor"
+              d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"
+            ></path>
+          </svg>
+        </button>
+        <div
+          class="collapse navbar-collapse flex-grow items-center"
+          id="navbarSupportedContent1"
+        >
+          <a class="text-xl text-white pr-2 font-semibold" href="#"
+            >Bincom Assessment</a
+          >
+          <!-- Left links -->
+          <ul class="navbar-nav flex flex-col pl-0 list-style-none mr-auto">
+            <li class="nav-item p-2">
+              <a
+                class="nav-link text-white opacity-60 hover:opacity-80 focus:opacity-80 p-0"
+                href="/"
+                >Polling Units</a
+              >
+            </li>
+            <li class="nav-item p-2">
+              <a
+                class="nav-link text-white opacity-60 hover:opacity-80 focus:opacity-80 p-0"
+                href="/lga"
+                >LGA</a
+              >
+            </li>
+            <li class="nav-item p-2">
+              <a class="nav-link text-white" href="/add">Add Polling unit</a>
+            </li>
+          </ul>
+          <!-- Left links -->
+        </div>
+      </div>
+    </nav>
+    <div class="container mx-auto py-5">
+      <h2 class="text-center font-bold text-3xl mb-4">Add Polling Unit</h2>
+      <ul>
+        <% messages.forEach(function(msg){ %>
+        <li class="bg-blue-300 text-center text-white py-2"><%= msg %></li>
+        <% })  %>
+      </ul>
+      <form action="/add" method="post" class="flex justify-center flex-col">
+      <div class="mt-2">
+        <label for="name" class="text-gray-700 text-sm font-semibold mb-2">
+          Polling Unit
+        </label>
+        <select
+              class="form-select appearance-none block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+              aria-label="Default select example"
+              name="polling_unit_uniqueid"
+              required
+            >
+              <% polling_units.forEach(function(unit){%>
+              <option value="<%=unit. polling_unit_id %>"><%= unit. polling_unit_name %></option>
+              <% }) %>
+            </select>
+      </div>
+      <div>
+        <label for="name" class="text-gray-700 text-sm font-semibold mb-2">
+          Party
+        </label>
+        <select
+              class="form-select appearance-none block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+              aria-label="Default select example"
+              name="party_abbrevaition"
+              required
+            >
+              <% parties.forEach(function(party){%>
+              <option value="<%=party. partyname %>"><%=party. partyname %></option>
+              <% }) %>
+            </select>
+      </div>
+      <div class="mt-2">
+        <label for="party_score" class="text-gray-700 text-sm font-semibold mb-2">Score</label>
+        <input required type="number" id="party_score"  name="party_score"  class=" block appearance-none w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"/>
+      </div>
+      <div class="mt-2">
+        <label for=" entered_by_user" class="text-gray-700 text-sm font-semibold mb-2">Entered By</label>
+        <input required type="text" id="entered_by_user"  name="entered_by_user"  class=" block appearance-none w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"/>
+      </div>
+      
+        <button
+          type="submit"
+          class="bg-blue-500 mt-2 px-4 py-2 text-white font-bold "
+        >
+          Submit
+        </button>
+      </div>
+    </form>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+            },
+          },
+        },
+      };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
+  </body>
+</html>

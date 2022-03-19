@@ -11,12 +11,13 @@ import { Party } from './entity/party.entity';
   imports: [
     TypeOrmModule.forRootAsync({
       useFactory: () => ({
-        type: process.env.DATABASE_TYPE,
-        host: process.env.DATABASE_HOST,
-        port: process.env.DATABASE_PORT,
-        username: process.env.DATABASE_USERNAME,
-        password: process.env.DATABASE_PASSWORD,
-        database: process.env.DATABASE_NAME,
+        type: process.env.DATABASE_TYPE || 'postgres',
+        host: process.env.DATABASE_HOST || 'balarama.db.elephantsql.com',
+        port: process.env.DATABASE_PORT || '5432',
+        username: process.env.DATABASE_USERNAME || 'cigukedm',
+        password:
+          process.env.DATABASE_PASSWORD || 'xvjZO4JZXl3Dsv2tyKOuQ9mB65PjYBnF',
+        database: process.env.DATABASE_NAME || 'cigukedm',
         syncronize: true,
         entities: ['dist/**/*.entity{.ts,.js}'],
         synchronize: true,

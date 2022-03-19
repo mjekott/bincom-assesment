@@ -18,12 +18,14 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
     TypeOrmModule.forRootAsync({
       inject: [ConfigService],
       useFactory: (config: ConfigService) => ({
-        type: config.get('DATABASE_TYPE'),
-        host: config.get('DATABASE_HOST'),
-        port: config.get('DATABASE_PORT'),
-        username: config.get('DATABASE_USERNAME'),
-        password: config.get('DATABASE_PASSWORD'),
-        database: config.get('DATABASE_NAME'),
+        type: config.get('DATABASE_TYPE') || process.env.DATABASE_TYPE,
+        host: config.get('DATABASE_HOST') || process.env.DATABASE_HOST,
+        port: config.get('DATABASE_PORT') || process.env.DATABASE_PORT,
+        username:
+          config.get('DATABASE_USERNAME') || process.env.DATABASE_USERNAME,
+        password:
+          config.get('DATABASE_PASSWORD') || process.env.DATABASE_PASSWORD,
+        database: config.get('DATABASE_NAME') || process.env.DATABASE_NAME,
         syncronize: true,
         entities: ['dist/**/*.entity{.ts,.js}'],
         synchronize: true,
